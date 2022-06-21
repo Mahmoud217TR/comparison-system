@@ -20,15 +20,15 @@ class ItemFactory extends Factory
         return [
             'name' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
-            'comperison_id' => null,
+            'comparison_id' => null,
         ];
     }
 
-    public function withComparision()
+    public function withComparison()
     {
         return $this->state(function (array $attributes) {
             return [
-                'comperison_id' => Comparison::factory(),
+                'comparison_id' => Comparison::factory(),
             ];
         });
     }

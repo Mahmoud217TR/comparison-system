@@ -22,15 +22,15 @@ class ComparisonFactory extends Factory
             'title' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
             'state' => 'public',
-            'user_id' => null,
+            'user_id' => User::factory(),
         ];
     }
 
-    public function withUser()
+    public function withoutUser()
     {
         return $this->state(function (array $attributes) {
             return [
-                'user_id' => User::factory(),
+                'user_id' => null,
             ];
         });
     }

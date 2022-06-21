@@ -13,7 +13,7 @@ class Type extends Model
     protected $fillable = [
         'name',
         'type',
-        'comperison_id',
+        'comparison_id',
     ];
 
     public static function types(){

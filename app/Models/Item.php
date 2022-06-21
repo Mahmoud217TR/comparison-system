@@ -12,7 +12,7 @@ class Item extends Model
     protected $fillable = [
         'name',
         'description',
-        'comperison_id',
+        'comparison_id',
     ];
 
     public function comparison(){
