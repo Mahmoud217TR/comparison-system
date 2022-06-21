@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Comparison;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,18 @@ class ItemFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->sentence(),
+            'description' => $this->faker->paragraph(),
+            'comperison_id' => null,
         ];
+    }
+
+    public function withComparision()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'comperison_id' => Comparison::factory(),
+            ];
+        });
     }
 }

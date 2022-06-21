@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Comparison;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,28 @@ class ComparisonFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->sentence(),
+            'description' => $this->faker->paragraph(),
+            'state' => 'public',
+            'user_id' => null,
         ];
+    }
+
+    public function withUser()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'user_id' => User::factory(),
+            ];
+        });
+    }
+
+    public function private()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'state' => 'private',
+            ];
+        });
     }
 }
