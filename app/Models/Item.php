@@ -9,6 +9,12 @@ class Item extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'description',
+        'comperison_id',
+    ];
+
     public function comparison(){
         return $this->belongsTo(Comparison::class);
     }

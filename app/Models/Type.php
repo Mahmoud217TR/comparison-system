@@ -10,6 +10,12 @@ class Type extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'type',
+        'comperison_id',
+    ];
+
     public static function types(){
         return [
             1 => 'string',

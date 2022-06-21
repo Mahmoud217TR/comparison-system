@@ -10,6 +10,13 @@ class Comparison extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'description',
+        'state',
+        'user_id',
+    ];
+
     public static function states(){
         return [
             1 => 'private',
