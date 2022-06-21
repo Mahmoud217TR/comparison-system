@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Comparison;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,6 +16,9 @@ return new class extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(Comparison::class)->constrained()->onDelete('cascade');
+            $table->string('name');
+            $table->unsignedInteger('type');
             $table->timestamps();
         });
     }
