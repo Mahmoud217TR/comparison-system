@@ -41,7 +41,7 @@ class TypePolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +53,7 @@ class TypePolicy
      */
     public function update(User $user, Type $type)
     {
-        //
+        return $user->isOwner($type->comparison);
     }
 
     /**
@@ -65,7 +65,7 @@ class TypePolicy
      */
     public function delete(User $user, Type $type)
     {
-        //
+        return $user->isOwner($type->comparison);
     }
 
     /**

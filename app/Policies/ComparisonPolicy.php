@@ -41,7 +41,7 @@ class ComparisonPolicy
      */
     public function create(User $user)
     {
-        return auth()->check();
+        return true;
     }
 
     /**
