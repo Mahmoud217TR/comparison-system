@@ -42,7 +42,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // Relations
     public function comparisons(){
         return $this->hasMany(Comparison::class);
+    }
+
+    // Functions
+    public function isOwner($object){
+        return $this->id = $object->user_id;
     }
 }

@@ -36,6 +36,7 @@ class Comparison extends Model
         );
     }
 
+    // Relations
     public function items(){
         return $this->hasMany(Item::class);
     }
@@ -46,5 +47,23 @@ class Comparison extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    // Scopes
+    public function scopePrivate($query){
+        return $query->where('state', '=', 1);
+    }
+
+    public function scopePublic($query){
+        return $query->where('state', '=', 2);
+    }
+
+    // Functions
+    public function isPrivate(){
+        return $this->state = 'private';
+    }
+
+    public function isPublic(){
+        return $this->state = 'public';
     }
 }
