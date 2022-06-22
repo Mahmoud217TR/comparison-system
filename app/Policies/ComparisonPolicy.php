@@ -30,7 +30,7 @@ class ComparisonPolicy
      */
     public function view(User $user, Comparison $comparison)
     {
-        //
+        return $user->isOwner($comparison) || $comparison->isPublic();
     }
 
     /**
@@ -41,7 +41,7 @@ class ComparisonPolicy
      */
     public function create(User $user)
     {
-        //
+        return auth()->check();
     }
 
     /**
@@ -53,7 +53,7 @@ class ComparisonPolicy
      */
     public function update(User $user, Comparison $comparison)
     {
-        //
+        return $user->isOwner($comparison);
     }
 
     /**
@@ -65,7 +65,7 @@ class ComparisonPolicy
      */
     public function delete(User $user, Comparison $comparison)
     {
-        //
+        return $user->isOwner($comparison);
     }
 
     /**
