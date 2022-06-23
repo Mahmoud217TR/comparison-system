@@ -39,8 +39,8 @@ class ComparisonController extends Controller
     public function store(StoreComparisonRequest $request)
     {
         $this->authorize('create',Comparison::class);
-        $comparison = Comparison::create($request->all());
-        return redirect()->route('');
+        $comparison = auth()->user()->comparisons()->save(new Comparison($request->all()));
+        return redirect()->route('comparison.show',$comparison);
     }
 
     /**
@@ -51,7 +51,7 @@ class ComparisonController extends Controller
      */
     public function show(Comparison $comparison)
     {
-        $this->authorize('show',$comparison);
+        $this->authorize('view',$comparison);
         return view('',compact('comparison'));
     }
 
@@ -64,7 +64,7 @@ class ComparisonController extends Controller
     public function edit(Comparison $comparison)
     {
         $this->authorize('update',$comparison);
-        return view('',compact('comparison'));
+        return view('comparison.edit',compact('comparison'));
     }
 
     /**
@@ -78,7 +78,7 @@ class ComparisonController extends Controller
     {
         $this->authorize('update',$comparison);
         $comparison->update($request->all());
-        return redirect()->route('');
+        return redirect()->route('comparison.show',$comparison);
     }
 
     /**

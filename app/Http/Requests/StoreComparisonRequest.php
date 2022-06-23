@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Comparison;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreComparisonRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class StoreComparisonRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +23,12 @@ class StoreComparisonRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(Comparison $comparison)
     {
         return [
-            //
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'state' => ['required', Rule::in($comparison->states())],
         ];
     }
 }

@@ -37,7 +37,7 @@
     <div class="col-sm-4">
         <select name="state" id="state" class="form-select">
             @foreach ($comparison->states() as $state)
-                <option value="{{ $state }}" @checked($state == $comparison->state)> {{ str()->ucfirst($state) }} </option>
+                <option value="{{ $state }}" @selected($state == $comparison->state)> {{ str()->ucfirst($state) }} </option>
             @endforeach
         </select>
         @error('state')
