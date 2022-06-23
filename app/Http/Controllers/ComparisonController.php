@@ -27,7 +27,7 @@ class ComparisonController extends Controller
     {
         $this->authorize('create',Comparison::class);
         $comparison = new Comparison;
-        return view('',compact('comparison'));
+        return view('comparison.create',compact('comparison'));
     }
 
     /**
