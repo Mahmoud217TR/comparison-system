@@ -25,7 +25,9 @@ class ComparisonController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create',Comparison::class);
+        $comparison = new Comparison;
+        return view('',compact('comparison'));
     }
 
     /**
@@ -36,7 +38,9 @@ class ComparisonController extends Controller
      */
     public function store(StoreComparisonRequest $request)
     {
-        //
+        $this->authorize('create',Comparison::class);
+        $comparison = Comparison::create($request->all());
+        return redirect()->route('');
     }
 
     /**
@@ -47,7 +51,8 @@ class ComparisonController extends Controller
      */
     public function show(Comparison $comparison)
     {
-        //
+        $this->authorize('show',$comparison);
+        return view('',compact('comparison'));
     }
 
     /**
@@ -58,7 +63,8 @@ class ComparisonController extends Controller
      */
     public function edit(Comparison $comparison)
     {
-        //
+        $this->authorize('update',$comparison);
+        return view('',compact('comparison'));
     }
 
     /**
@@ -70,7 +76,9 @@ class ComparisonController extends Controller
      */
     public function update(UpdateComparisonRequest $request, Comparison $comparison)
     {
-        //
+        $this->authorize('update',$comparison);
+        $comparison->update($request->all());
+        return redirect()->route('');
     }
 
     /**
@@ -81,6 +89,8 @@ class ComparisonController extends Controller
      */
     public function destroy(Comparison $comparison)
     {
-        //
+        $this->authorize('delete',$comparison);
+        $comparison->delete();
+        return redirect()->route('');
     }
 }
