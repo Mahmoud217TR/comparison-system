@@ -15,7 +15,7 @@ class ComparisonController extends Controller
      */
     public function index()
     {
-        $comparisons = auth()->user()->comparisons()->withCount('items')->paginate(10);
+        $comparisons = auth()->user()->comparisons()->withCount('items')->paginate(20);
         return view('comparison.index', compact('comparisons'));
     }
 
