@@ -15,7 +15,8 @@ class ComparisonController extends Controller
      */
     public function index()
     {
-        //
+        $comparisons = auth()->user()->comparisons()->paginate(10);
+        return view('comparison.index', compact('comparisons'));
     }
 
     /**

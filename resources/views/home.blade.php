@@ -12,7 +12,10 @@
                 <div class="card-body">
                     <ul class="list-group">
                         <li class="list-group-item text-center">
-                            <a href="{{ route('comparison.create') }}" class="btn btn-primary">Create a new Add</a>
+                            <a href="{{ route('comparison.index') }}" class="btn btn-primary">Check Your Comparison</a>
+                        </li>
+                        <li class="list-group-item text-center">
+                            <a href="{{ route('comparison.create') }}" class="btn btn-primary">Create a new Comparison</a>
                         </li>
                     </ul>
                 </div>

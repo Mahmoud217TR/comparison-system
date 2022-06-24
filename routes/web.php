@@ -22,4 +22,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('comparison',ComparisonController::class)->except('index');
+Route::resource('comparison',ComparisonController::class);
