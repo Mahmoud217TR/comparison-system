@@ -28,9 +28,12 @@ class ComparisonPolicy
      * @param  \App\Models\Comparison  $comparison
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Comparison $comparison)
+    public function view(?User $user, Comparison $comparison)
     {
-        return $user->isOwner($comparison) || $comparison->isPublic();
+        if($user){
+            return $user->isOwner($comparison) || $comparison->isPublic();
+        }
+        return $comparison->isPublic();
     }
 
     /**
