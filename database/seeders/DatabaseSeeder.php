@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Comparison;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -17,6 +18,6 @@ class DatabaseSeeder extends Seeder
     {
         User::factory()->create([
             'email' => 'user@users.test',
-        ]);
+        ])->has(Comparison::factory(15)->withoutUser()->make());
     }
 }
