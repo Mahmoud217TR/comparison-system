@@ -20,7 +20,7 @@
                             {{ $comparison->title }}
                         </th>
                         <th>
-                            {{ $comparison->items->count() }}
+                            {{ $comparison->items_count }}
                         </th>
                         <th>
                             <a href="{{ route('comparison.show', $comparison) }}" class="btn btn-sm btn-primary">Show</a>
