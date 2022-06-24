@@ -92,6 +92,6 @@ class ComparisonController extends Controller
     {
         $this->authorize('delete',$comparison);
         $comparison->delete();
-        return redirect()->route('');
+        return redirect()->route('comparison.index');
     }
 }
