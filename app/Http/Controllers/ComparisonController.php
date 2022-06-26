@@ -56,7 +56,7 @@ class ComparisonController extends Controller
     public function show(Comparison $comparison)
     {
         $this->authorize('view',$comparison);
-        return view('',compact('comparison'));
+        return view('comparison.show',compact('comparison'));
     }
 
     /**
